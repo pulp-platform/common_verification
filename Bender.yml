@@ -9,3 +9,6 @@ sources:
   # etc.  Files within a level are ordered alphabetically.
   # Level 0
   - src/clk_rst_gen.sv
+  - src/rand_synch_holdable_driver.sv
+  # Level 1
+  - src/rand_synch_driver.sv
