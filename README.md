@@ -17,3 +17,10 @@ code is generally not synthesizable.
 |-------------------------------|---------------------------------------------------|--------|
 | `rand_synch_driver`           | Randomizing synchronous driver                    | active |
 | `rand_synch_holdable_driver`  | Randomizing synchronous driver that can be halted | active |
+
+### Stream (Ready/Valid) Masters and Slaves
+
+|      Name         |             Description               | Status |
+|-------------------|---------------------------------------|--------|
+| `rand_stream_mst` | Randomizing stream master             | active |
+| `rand_stream_slv` | Randomizing stream slave              | active |
