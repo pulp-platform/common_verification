@@ -10,3 +10,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add standalone clock and reset generator.
 - Add randomizing synchronous driver and holdable driver.
 - Add randomizing stream master and slave.
+- Add ID queue with randomizing output.

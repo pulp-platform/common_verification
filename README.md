@@ -24,3 +24,9 @@ code is generally not synthesizable.
 |-------------------|---------------------------------------|--------|
 | `rand_stream_mst` | Randomizing stream master             | active |
 | `rand_stream_slv` | Randomizing stream slave              | active |
+
+### Data Structures
+
+|      Name         |             Description               | Status |
+|-------------------|---------------------------------------|--------|
+| `rand_id_queue`   | ID queue with randomizing output      | active |
