@@ -11,3 +11,4 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Add randomizing synchronous driver and holdable driver.
 - Add randomizing stream master and slave.
 - Add ID queue with randomizing output.
+- Add `rand_verif_pkg` with task to wait for a random number (within interval) of clock cycles.

@@ -11,6 +11,14 @@ code is generally not synthesizable.
 |---------------|---------------------------------------|--------|
 | `clk_rst_gen` | Standalone clock and reset generator  | active |
 
+### Generic Functions and Tasks
+
+`rand_verif_pkg` defines the following functions and tasks:
+
+|         Name        |                        Description                          | Status |
+|---------------------|-------------------------------------------------------------|--------|
+| `rand_wait`         | Wait for a random number (within interval) of clock cycles  | active |
+
 ### Simple Synchronous Drivers
 
 |              Name             |                   Description                     | Status |

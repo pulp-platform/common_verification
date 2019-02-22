@@ -12,6 +12,7 @@ sources:
   - src/rand_id_queue.sv
   - src/rand_stream_mst.sv
   - src/rand_synch_holdable_driver.sv
+  - src/rand_verif_pkg.sv
   # Level 1
   - src/rand_synch_driver.sv
   # Level 2
