@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## v0.1.1 - 2019-02-26
+
 ### Fixed
 - Move all files into the `simulation` target. This precludes synthesis of files in this package
   when this package is included as dependency.
