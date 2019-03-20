@@ -16,9 +16,9 @@ module rand_stream_slv #(
   // Maximum number of clock cycles to wait between applying two consecutive values.
   parameter int   MAX_WAIT_CYCLES = -1,
   // Application delay: time delay before output changes after an active clock edge.
-  parameter time  APPL_DELAY = 0ns,
+  parameter time  APPL_DELAY = 0ps,
   // Acquisition delay: time delay before ready input is read after an active clock edge.
-  parameter time  ACQ_DELAY = 0ns,
+  parameter time  ACQ_DELAY = 0ps,
   // Store each inupt beat in an internal queue.
   parameter bit   ENQUEUE = 1'b0
 ) (
@@ -29,9 +29,6 @@ module rand_stream_slv #(
   input  logic    valid_i,
   output logic    ready_o
 );
-
-  timeunit 1ns;
-  timeprecision 10ps;
 
   if (ENQUEUE) begin: gen_queue
     data_t queue[$];
@@ -60,7 +57,7 @@ module rand_stream_slv #(
 
 `ifndef VERILATOR
   initial begin: validate_params
-    assert (ACQ_DELAY > 0ns)
+    assert (ACQ_DELAY > 0ps)
       else $fatal("The acquisition delay must be greater than 0!");
     assert (ACQ_DELAY > APPL_DELAY)
       else $fatal("The acquisition delay must be greater than the application delay!");

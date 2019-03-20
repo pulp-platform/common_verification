@@ -16,7 +16,7 @@ module rand_synch_holdable_driver #(
   // Maximum number of clock cycles to wait between applying two consecutive values.
   parameter int   MAX_WAIT_CYCLES = -1,
   // Application delay: time delay before output changes after an active clock edge.
-  parameter time  APPL_DELAY = 0ns
+  parameter time  APPL_DELAY = 0ps
 ) (
   input  logic    clk_i,
   input  logic    rst_ni,
@@ -24,9 +24,6 @@ module rand_synch_holdable_driver #(
   input  logic    hold_i,
   output data_t   data_o
 );
-
-  timeunit 1ns;
-  timeprecision 10ps;
 
   initial begin
     int unsigned rand_delay, rand_success;
@@ -58,7 +55,7 @@ module rand_synch_holdable_driver #(
       else $fatal("The maximum number of wait cycles must be at least 0!");
     assert (MAX_WAIT_CYCLES >= MIN_WAIT_CYCLES)
       else $fatal("The maximum number of wait cycles must be at least the minimum number of wait cycles!");
-    assert (APPL_DELAY > 0ns)
+    assert (APPL_DELAY > 0ps)
       else $fatal("The application delay must be greater than 0!");
   end
 `endif

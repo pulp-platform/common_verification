@@ -16,7 +16,7 @@ module rand_synch_driver #(
   // Maximum number of clock cycles to wait between applying two consecutive values.
   parameter int   MAX_WAIT_CYCLES = -1,
   // Application delay: time delay before output changes after an active clock edge.
-  parameter time  APPL_DELAY = 0ns
+  parameter time  APPL_DELAY = 0ps
 ) (
   input  logic    clk_i,
   input  logic    rst_ni,

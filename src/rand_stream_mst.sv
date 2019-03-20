@@ -16,9 +16,9 @@ module rand_stream_mst #(
   // Maximum number of clock cycles to wait between applying two consecutive values.
   parameter int   MAX_WAIT_CYCLES = -1,
   // Application delay: time delay before output changes after an active clock edge.
-  parameter time  APPL_DELAY = 0ns,
+  parameter time  APPL_DELAY = 0ps,
   // Acquisition delay: time delay before ready input is read after an active clock edge.
-  parameter time  ACQ_DELAY = 0ns
+  parameter time  ACQ_DELAY = 0ps
 ) (
   input  logic    clk_i,
   input  logic    rst_ni,
@@ -27,9 +27,6 @@ module rand_stream_mst #(
   output logic    valid_o,
   input  logic    ready_i
 );
-
-  timeunit 1ns;
-  timeprecision 10ps;
 
   int unsigned rand_wait_cycles;
 
@@ -95,9 +92,9 @@ module rand_stream_mst #(
       else $fatal("The maximum number of wait cycles must be at least 0!");
     assert (MAX_WAIT_CYCLES >= MIN_WAIT_CYCLES)
       else $fatal("The maximum number of wait cycles must be at least the minimum number of wait cycles!");
-    assert (APPL_DELAY > 0ns)
+    assert (APPL_DELAY > 0ps)
       else $fatal("The application delay must be greater than 0!");
-    assert (ACQ_DELAY > 0ns)
+    assert (ACQ_DELAY > 0ps)
       else $fatal("The acquisition delay must be greater than 0!");
     assert (ACQ_DELAY > APPL_DELAY)
       else $fatal("The acquisition delay must be greater than the application delay!");
