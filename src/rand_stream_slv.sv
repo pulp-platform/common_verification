@@ -55,7 +55,7 @@ module rand_stream_slv #(
   ) i_ready_driver (
     .clk_i  (clk_i),
     .rst_ni (rst_ni),
-    .oup_o  (ready_o)
+    .data_o (ready_o)
   );
 
 `ifndef VERILATOR
