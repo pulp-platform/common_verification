@@ -25,7 +25,7 @@ module rand_synch_driver #(
 );
 
   rand_synch_holdable_driver #(
-    .data_t           (logic),
+    .data_t           (data_t),
     .MIN_WAIT_CYCLES  (MIN_WAIT_CYCLES),
     .MAX_WAIT_CYCLES  (MAX_WAIT_CYCLES),
     .APPL_DELAY       (APPL_DELAY)
@@ -33,7 +33,7 @@ module rand_synch_driver #(
     .clk_i  (clk_i),
     .rst_ni (rst_ni),
     .hold_i (1'b0),
-    .data_o (ready_o)
+    .data_o (data_o)
   );
 
 endmodule
