@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+## v0.1.2 - 2019-08-20
+
 ### Fixed
 - rand_synch_driver: Fix instantiation of `rand_synch_holdable_driver`.
 - rand_stream_slv: Fix instantiation of `rand_sync_driver`.
