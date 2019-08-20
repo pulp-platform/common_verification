@@ -1,0 +1,5 @@
+.*
+!.ci/
+!.git*
+/Bender.lock
+/Bender.local
