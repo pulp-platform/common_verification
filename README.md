@@ -10,6 +10,7 @@ code is generally not synthesizable.
 |      Name     |             Description               | Status |
 |---------------|---------------------------------------|--------|
 | `clk_rst_gen` | Standalone clock and reset generator  | active |
+| `sim_timeout` | Timeout for simulations               | active |
 
 ### Generic Functions and Tasks
 
