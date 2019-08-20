@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## Unreleased
 
+### Added
+- Add module to timeout simulations.
+
 ### Changed
 - Remove `timeunit` and `timeprecision` declarations from all modules.  Multiple simulators do not
   properly implement precedence of these declarations (IEEE 1800-2012, 3.14.2.3), so we now avoid
