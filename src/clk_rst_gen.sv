@@ -24,8 +24,15 @@ module clk_rst_gen #(
     clk = 1'b0;
   end
   always begin
-    clk = ~clk;
+    // Emit rising clock edge.
+    clk = 1'b1;
+    // Wait for at most half the clock period before emitting falling clock edge.  Due to integer
+    // division, this is not always exactly half the clock period but as close as we can get.
     #(ClkPeriod / 2);
+    // Emit falling clock edge.
+    clk = 1'b0;
+    // Wait for remainder of clock period before continuing with next cycle.
+    #((ClkPeriod + 1) / 2);
   end
   assign clk_o = clk;
 
