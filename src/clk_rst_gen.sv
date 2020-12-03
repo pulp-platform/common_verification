@@ -26,6 +26,8 @@ module clk_rst_gen #(
   always begin
     clk = ~clk;
     #(ClkPeriod / 2);
+    clk = ~clk;
+    #((ClkPeriod + 1) / 2);
   end
   assign clk_o = clk;
 
