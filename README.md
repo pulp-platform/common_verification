@@ -7,10 +7,11 @@ code is generally not synthesizable.
 
 ### Basic Modules
 
-|      Name     |             Description               | Status |
-|---------------|---------------------------------------|--------|
-| `clk_rst_gen` | Standalone clock and reset generator  | active |
-| `sim_timeout` | Timeout for simulations               | active |
+|        Name        |                Description                | Status |
+| ------------------ | ----------------------------------------- | ------ |
+| `clk_rst_gen`      | Standalone clock and reset generator      | active |
+| `dual_clk_rst_gen` | Standalone dual-clock and reset generator | active |
+| `sim_timeout`      | Timeout for simulations                   | active |
 
 ### Generic Functions and Tasks
 
