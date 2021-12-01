@@ -44,11 +44,11 @@ module clk_rst_gen #(
 `ifndef VERILATOR
   initial begin: validate_params
     assert (ClkPeriod >= 2ps)
-      else $fatal("The clock period must be at least 2ps!");
+      else $fatal(1, "The clock period must be at least 2ps!");
       // Reason: Gets divided by two, and some simulators do not support non-integer time steps, so
       // if the time unit is 1ps, this would fail.
     assert (RstClkCycles > 0)
-      else $fatal("The number of clock cycles in reset must be greater than 0!");
+      else $fatal(1, "The number of clock cycles in reset must be greater than 0!");
   end
 `endif
 
