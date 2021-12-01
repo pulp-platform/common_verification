@@ -21,3 +21,7 @@ sources:
     - src/rand_synch_driver.sv
     # Level 2
     - src/rand_stream_slv.sv
+
+  - target: test
+    files:
+    - test/tb_clk_rst_gen.sv

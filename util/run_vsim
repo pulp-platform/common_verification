@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+#
+# Copyright (c) 2021 ETH Zurich, University of Bologna
+# Licensed under the Apache License, Version 2.0.
+# SPDX-License-Identifier: Apache-2.0
+#
+# Authors:
+# - Andreas Kurth <akurth@iis.ee.ethz.ch>
+
+set -e
+readonly ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+
+[ ! -z "$VSIM" ] || VSIM=vsim
+
+call_vsim() {
+    echo "run -all" | $VSIM "$@" | tee vsim.log 2>&1
+    grep "Errors: 0," vsim.log
+}
+
+exec_test() {
+    if [ ! -e "$ROOT/test/tb_$1.sv" ]; then
+        echo "Testbench for '$1' not found!"
+        exit 1
+    fi
+    case "$1" in
+        clk_rst_gen)
+            for CLK_PERIOD_NS in 4 7; do
+                for RST_CLK_CYCLES in 5 8; do
+                    call_vsim tb_$1 -t 1ns \
+                        -gTbClkPeriod="${CLK_PERIOD_NS}ns" -gTbRstClkCycles="$RST_CLK_CYCLES"
+                done
+            done
+            ;;
+        *)
+            call_vsim tb_$1 -t 1ns -coverage -voptargs="+acc +cover=bcesfx"
+            ;;
+    esac
+}
+
+if [ "$#" -eq 0 ]; then
+    tests=()
+    while IFS=  read -r -d $'\0'; do
+        tb_name="$(basename -s .sv $REPLY)"
+        dut_name="${tb_name#tb_}"
+        tests+=("$dut_name")
+    done < <(find "$ROOT/test" -name 'tb_*.sv' -a \( ! -name '*_pkg.sv' \) -print0)
+else
+    tests=("$@")
+fi
+
+for t in "${tests[@]}"; do
+    exec_test $t
+done
