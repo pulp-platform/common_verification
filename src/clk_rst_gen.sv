@@ -40,7 +40,8 @@ module clk_rst_gen #(
   initial begin
     static int unsigned rst_cnt = 0;
     rst_no = 1'b0;
-    while (rst_cnt <= RstClkCycles) begin
+    #(ClkPeriod / 2); // Start counting clock cycles on first complete cycle.
+    while (rst_cnt < RstClkCycles) begin
       @(posedge clk);
       rst_cnt++;
     end

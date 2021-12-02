@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 
 ### Fixed
-- `clk_rst_gen`: Fix generation of odd clock periods.
+- `clk_rst_gen`:
+  - Fix generation of odd clock periods.
+  - Fix number of reset cycles.
 
 ## v0.2.0 - 2019-08-20
 
