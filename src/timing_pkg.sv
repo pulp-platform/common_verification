@@ -61,7 +61,7 @@ package timing_pkg;
 
         task test_wait_cycles(int unsigned n);
             uninit_warning();
-            repeat(n) @(posedge(clk_vif.clk));
+            this.wait_cycles(n);
             #(test_delay);
         endtask
 
