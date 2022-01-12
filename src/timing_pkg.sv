@@ -9,7 +9,7 @@
 // CONDITIONS OF ANY KIND, either express or implied. See the License for the
 // specific language governing permissions and limitations under the License.
 
-// Package with functions and tasks commonly used in ATI timing
+/// Package with functions and tasks commonly used in ATI timing
 package timing_pkg;
 
     class ati_utility;
