@@ -37,6 +37,10 @@ class rand_id_queue #(
   function bit empty();
     return (size == 0);
   endfunction
+  // vivado xsim doesn't support empty method name. previous is kept for backward compatibility
+  function bit is_empty();
+    return (size == 0);
+  endfunction
 
   // Pick a non-empty queue at random and return the front element.  Not defined if the ID queue is
   // empty.
@@ -60,7 +64,7 @@ class rand_id_queue #(
   // Pick a non-empty queue at random and return the ID of that queue.  Not defined if the ID queue
   // is empty.
   function id_t rand_id();
-    if (!empty()) begin
+    if (!is_empty()) begin
       id_t id;
       do begin
         void'(std::randomize(id));
