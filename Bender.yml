@@ -18,6 +18,7 @@ sources:
     - src/rand_verif_pkg.sv
     - src/signal_highlighter.sv
     - src/sim_timeout.sv
+    - src/stream_watchdog.sv
     # Level 1
     - src/rand_synch_driver.sv
     # Level 2
