@@ -16,6 +16,7 @@ module stream_watchdog #(
     parameter int unsigned NumCycles
 )(
     input logic clk_i,
+    input logic rst_ni,
     input logic valid_i,
     input logic ready_i
 );
@@ -28,10 +29,11 @@ module stream_watchdog #(
 
         // count down when inactive, restore on activity
         while (cnt > 0) begin
-            if (valid_i & ready_i)
+            if (valid_i && ready_i || !rst_ni) begin
                 cnt = NumCycles;
-            else
+            end else begin
                 cnt--;
+            end
             @(posedge clk_i);
         end
 
