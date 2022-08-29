@@ -7,10 +7,11 @@ code is generally not synthesizable.
 
 ### Basic Modules
 
-|      Name     |             Description               | Status |
-|---------------|---------------------------------------|--------|
-| `clk_rst_gen` | Standalone clock and reset generator  | active |
-| `sim_timeout` | Timeout for simulations               | active |
+|      Name            |                                  Description                               | Status |
+|----------------------|----------------------------------------------------------------------------|--------|
+| `clk_rst_gen`        | Standalone clock and reset generator                                       | active |
+| `sim_timeout`        | Timeout for simulations                                                    | active |
+| `stream_watchdog`    | Terminates a simulation after a number of cycles of inactivity of a stream | active |
 
 ### Generic Functions and Tasks
 
@@ -39,3 +40,8 @@ code is generally not synthesizable.
 |      Name         |             Description               | Status |
 |-------------------|---------------------------------------|--------|
 | `rand_id_queue`   | ID queue with randomizing output      | active |
+
+### Simulation Helpers
+|      Name            |                        Description                    | Status |
+|----------------------|-------------------------------------------------------|--------|
+| `signal_highlighter` | Highlights a signal in the wave for better visibility | active |

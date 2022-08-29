@@ -11,7 +11,7 @@
 //
 // Author: Thomas Benz <tbenz@ethz.ch>
 
-// highlights a signal in the waveform for easier viewing
+/// Highlights a signal in the waveform for easier viewing
 module signal_highlighter #(
     parameter type T = logic
 )(

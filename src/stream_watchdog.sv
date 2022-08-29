@@ -11,7 +11,7 @@
 //
 // Author: Thomas Benz <tbenz@ethz.ch>
 
-// Terminates simulation in case a ready-valid handshake is inactive or deadlocked for NumCycles
+/// Terminates simulation in case a ready-valid handshake is inactive or deadlocked for NumCycles
 module stream_watchdog #(
     parameter int unsigned NumCycles
 )(
