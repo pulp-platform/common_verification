@@ -8,12 +8,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 
 ### Added
-- Add signal highlighter
 
 ### Changed
 
 ### Fixed
 
+## 0.2.2 - 2022-08-29
+
+### Added
+- Add signal highlighter
+- Add stream watchdog
 
 ## 0.2.1 - 2021-12-02
 

@@ -11,22 +11,34 @@
 //
 // Author: Thomas Benz <tbenz@ethz.ch>
 
-/// Highlights a signal in the waveform for easier viewing
-module signal_highlighter #(
-    parameter type T = logic
+/// Terminates simulation in case a ready-valid handshake is inactive or deadlocked for NumCycles
+module stream_watchdog #(
+    parameter int unsigned NumCycles
 )(
-    input logic ready_i,
+    input logic clk_i,
+    input logic rst_ni,
     input logic valid_i,
-    input T data_i
+    input logic ready_i
 );
 
-    T in_wave;
+    int unsigned cnt;
 
-    always_comb begin
-        in_wave = 'Z;
-        if (ready_i & valid_i) begin
-            in_wave = data_i;
+    initial begin : wd
+        // initialize counter
+        cnt = NumCycles;
+
+        // count down when inactive, restore on activity
+        while (cnt > 0) begin
+            if (valid_i && ready_i || !rst_ni) begin
+                cnt = NumCycles;
+            end else begin
+                cnt--;
+            end
+            @(posedge clk_i);
         end
+
+        // tripped watchdog
+        $fatal(1, "Tripped Watchdog (%m) at %dns, Inactivity for %d cycles", $time(), NumCycles);
     end
 
 endmodule
