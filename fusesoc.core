@@ -1,5 +1,5 @@
 CAPI=2:
-name: pulp-platform.org::common_verification:0.2.2
+name: pulp-platform.org::common_verification:0.2.3
 
 filesets:
   # Files in this package are meant for simulation only.

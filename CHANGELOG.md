@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+## 0.2.3 - 2022-09-14
+
+### Added
+- Add support for fusesoc ([#4](https://github.com/pulp-platform/common_verification/pull/4))
+
+### Fixed
+- `rand_id_queue`: Rename `empty` method to `is_empty` for XSIM compatibility. ([#4](https://github.com/pulp-platform/common_verification/pull/4))
+
 ## 0.2.2 - 2022-08-29
 
 ### Added
