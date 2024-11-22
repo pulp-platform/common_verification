@@ -15,7 +15,7 @@ package rand_verif_pkg;
   // Pick a random number from the interval [min, max] and wait for that number of clock cyles.
   task automatic rand_wait(input int unsigned min, max, ref logic clk);
       int unsigned rand_success, cycles;
-      rand_success = randomize(cycles) with {
+      rand_success = std::randomize(cycles) with {
           cycles >= min;
           cycles <= max;
       };
