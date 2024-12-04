@@ -13,6 +13,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Fixed
 
+## 0.2.4 - 2024-12-04
+
+### Fixed
+- Minor Verilator fixes ([#8](https://github.com/pulp-platform/common_verification/pull/8), [#9](https://github.com/pulp-platform/common_verification/pull/9))
+
 ## 0.2.3 - 2022-09-14
 
 ### Added
