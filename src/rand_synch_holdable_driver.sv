@@ -26,16 +26,12 @@ module rand_synch_holdable_driver #(
 );
 
   initial begin
-    int unsigned rand_delay, rand_success;
+    int unsigned rand_delay;
     data_o = '0;
     wait (rst_ni);
     @(posedge clk_i);
     forever begin
-      rand_success = std::randomize(rand_delay) with {
-        rand_delay >= MinWaitCycles;
-        rand_delay <= MaxWaitCycles;
-      };
-      assert (rand_success) else $error("Failed to randomize wait cycles!");
+      rand_delay = $urandom_range(MaxWaitCycles,MinWaitCycles);
       repeat(rand_delay) begin
         @(posedge clk_i);
       end

@@ -31,12 +31,7 @@ module rand_stream_mst #(
   int unsigned rand_wait_cycles;
 
   function static void randomize_wait_cycles();
-    int unsigned rand_success;
-    rand_success = std::randomize(rand_wait_cycles) with {
-      rand_wait_cycles >= MinWaitCycles;
-      rand_wait_cycles <= MaxWaitCycles;
-    };
-    assert (rand_success) else $error("Failed to randomize wait cycles!");
+    rand_wait_cycles = $urandom_range(MaxWaitCycles,MinWaitCycles);
   endfunction
 
   initial begin

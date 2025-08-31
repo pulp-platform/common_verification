@@ -14,12 +14,7 @@ package rand_verif_pkg;
 
   // Pick a random number from the interval [min, max] and wait for that number of clock cyles.
   task automatic rand_wait(input int unsigned min, max, ref logic clk);
-      int unsigned rand_success, cycles;
-      rand_success = std::randomize(cycles) with {
-          cycles >= min;
-          cycles <= max;
-      };
-      assert (rand_success) else $error("Failed to randomize wait cycles!");
+      int unsigned cycles = $urandom_range(max,min);
       repeat (cycles) @(posedge clk);
   endtask
 
