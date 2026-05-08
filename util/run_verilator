@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+#
+# Copyright (c) 2021 ETH Zurich, University of Bologna
+# Licensed under the Apache License, Version 2.0.
+# SPDX-License-Identifier: Apache-2.0
+
+set -e
+
+readonly ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+
+call_verilator() {
+    local tb=$1
+    shift
+    "$ROOT/util/compile_verilator" "$tb" "$@"
+    "$ROOT/obj_dir/V${tb}" 2>&1 | tee verilator.log
+    if grep -q "^%Error" verilator.log; then
+        echo "Errors found in simulation of ${tb}!"
+        return 1
+    fi
+}
+
+exec_test() {
+    if [ ! -e "$ROOT/test/tb_$1.sv" ]; then
+        echo "Testbench for '$1' not found!"
+        exit 1
+    fi
+    case "$1" in
+        clk_rst_gen)
+            # TbClkPeriod is a 'time' type; verilator does not support time
+            # literals in -G overrides, so only TbRstClkCycles is swept here.
+            for RST_CLK_CYCLES in 5 8; do
+                call_verilator "tb_$1" "-GTbRstClkCycles=${RST_CLK_CYCLES}"
+            done
+            ;;
+        *)
+            call_verilator "tb_$1"
+            ;;
+    esac
+}
+
+if [ "$#" -eq 0 ]; then
+    tests=()
+    while IFS=  read -r -d $'\0'; do
+        tb_name="$(basename -s .sv "$REPLY")"
+        dut_name="${tb_name#tb_}"
+        tests+=("$dut_name")
+    done < <(find "$ROOT/test" -name 'tb_*.sv' -a \( ! -name '*_pkg.sv' \) -print0)
+else
+    tests=("$@")
+fi
+
+for t in "${tests[@]}"; do
+    exec_test "$t"
+done

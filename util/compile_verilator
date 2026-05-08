@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+# Copyright (c) 2021 ETH Zurich, University of Bologna
+# Licensed under the Apache License, Version 2.0.
+# SPDX-License-Identifier: Apache-2.0
+
+set -e
+
+readonly ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+
+[ -n "$VERILATOR" ] || VERILATOR=verilator
+[ -n "$BENDER" ]    || BENDER=bender
+
+TB=${1:-tb_clk_rst_gen}
+shift || true
+
+$BENDER script verilator -t test > "$ROOT/verilator.f"
+
+$VERILATOR --cc \
+    -f "$ROOT/verilator.f" \
+    --exe "$ROOT/test/${TB}.cpp" \
+    --top-module "${TB}" \
+    --trace \
+    --timing \
+    --timescale 1ns/100ps \
+    "$@" \
+    --Mdir "$ROOT/obj_dir"
+
+make -C "$ROOT/obj_dir" -f "V${TB}.mk" > /dev/null
