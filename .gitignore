@@ -1,3 +1,6 @@
 /Bender.lock
 /build/
 /obj_dir/
+/verilator.f
+/verilator.log
+/*.vcd
